@@ -1,69 +1,62 @@
-# COMSW3102_001_2024 Spring 2024, Class Project
-## Name: Chan Nyein Zin, GitHub username: channyeinzin
+# Keeper Note-taking Application
 
-## Keeper is a web-based note-taking application that allows users to quickly jot down and organize their thoughts in a visually appealing manner. Built with React and utilizing a simple authentication system, Keeper ensures that your notes are private and secure.
+## Overview
+**Keeper** is a web-based note-taking application designed to allow users to quickly jot down and organize their thoughts in a visually appealing manner. Built with React and integrated with a simple authentication system, Keeper ensures that your notes are private and secure.
 
 ## Features
-**Create Notes:** Add new notes with a title and take a note.
-**View Notes:** All notes are displayed on the main page.
-**Delete Notes:** Remove notes you no longer need.
-**User Authentication:** Log in to view and manage your notes.
+- **Create Notes:** Users can add new notes with a title.
+- **View Notes:** All notes are displayed on the main page for easy access.
+- **Delete Notes:** Users can remove notes they no longer need.
+- **User Authentication:** Secure login system to view and manage notes.
 
-## Installing Keeper
+## Prerequisites
+Before installing Keeper, ensure you meet the following requirements:
+- **Node.js:** Install the latest version of Node.js from [Node.js official site](https://nodejs.org/).
+- **Operating System:** Compatible with Windows, Linux, or Mac.
+- **Access Permissions:** Ensure read access to the necessary environments for deploying the application.
+- **Internet Computer SDK:** If not already installed, set up DFX with the following command:
 
-To install Keeper, follow these steps:
+    ```bash
+    DFX_VERSION=0.9.3 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+    ```
 
-```
+- **Visual Studio Code:** Recommended to have the Motoko plugin installed for development.
+
+## Installation
+
+Clone the repository and install dependencies:
+
+```bash
 git clone https://github.com/channyeinzin/keepernote.git
 cd keepernote
 npm install
 ```
 
-## Prerequisites
+## Running the Application
 
-Before we begin, ensure we have met the following requirements:
-- We have installed the latest version of [Node.js](https://nodejs.org/).
-- We have a Windows/Linux/Mac machine.
-- We have read access to the necessary environment for deploying the application (if applicable).
-- If we do not have DFX need to install...
-1. Open up our Terminal app (In your applications folder). Or just search for it with spotlight.
-2. Copy the following command and paste it into our terminal and hit
-enter.
-
-```bash
-DFX_VERSION=0.9.3 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
-```
-- need to have Motoko in the VS code
-
-
-## How to Run Completed Code
-
-1. Make sure dfx is running
-
+- Start the Internet Computer locally:
 ```
 dfx start --clean
+
 ```
-2. If you have not installed npm do the following, Otherwise, skip this step
-```
-npm install
-```
-3. Deploy the project
+
+- Deploy the project:
 ```
 dfx deploy
+
 ```
 
-4. Start NPM
+- Start the application:
 ```
 npm start
-```
-
-5. Copy the link and start to login and add note: chooe the loal host depend on the port numbert given while running
-```
-http://localhost:
 
 ```
+- Access the application:Navigate to 
+``` 
+http://localhost:<port_number>/ 
+```
+in your web browser. Replace <port_number> with the port number provided in the terminal after running npm start.
 
 ## Demo
-
 
 ![Demo Screenshot1](/src/dkeeper_assets/assets/sc1.gif)
