@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# keepernote
-=======
 # COMSW3102_001_2024 Spring 2024, Class Project
 ## Name: Chan Nyein Zin, GitHub username: channyeinzin
 
@@ -60,8 +57,7 @@ dfx deploy
 ```
 npm start
 
-
-
-
-
->>>>>>> master
+5. Copy the link and start to login and add note
+```
+http://localhost:8000
+```
