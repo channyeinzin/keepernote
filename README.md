@@ -14,11 +14,10 @@
 To install Keeper, follow these steps:
 
 ```
-git clone https://github.com/yourusername/keeper.git
-cd keeper
+git clone https://github.com/channyeinzin/keepernote.git
+cd keepernote
 npm install
 ```
-
 
 ## Prerequisites
 
@@ -37,7 +36,7 @@ DFX_VERSION=0.9.3 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 - need to have Motoko in the VS code
 
 
-# How to Run Completed Code
+## How to Run Completed Code
 
 1. Make sure dfx is running
 
@@ -56,8 +55,15 @@ dfx deploy
 4. Start NPM
 ```
 npm start
+```
 
-5. Copy the link and start to login and add note
+5. Copy the link and start to login and add note: chooe the loal host depend on the port numbert given while running
 ```
-http://localhost:8000
+http://localhost:
+
 ```
+
+## Demo
+
+
+![Demo Screenshot1](/src/dkeeper_assets/assets/sc1.gif)

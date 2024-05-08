@@ -10,39 +10,64 @@ function App() {
   const [notes, setNotes] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
 
+  // Check login status from local storage when component mounts
+  useEffect(() => {
+    const isLogged = localStorage.getItem("isLoggedIn") === "true";
+    setLoggedIn(isLogged);
+  }, []);
+
+  // Effect to fetch notes when logged in
   useEffect(() => {
     if (loggedIn) {
       fetchData();
     }
   }, [loggedIn]);
 
+  // Fetch notes from the backend
   async function fetchData() {
-    const notesArray = await dkeeper.readNotes();
-    setNotes(notesArray);
+    try {
+      const notesArray = await dkeeper.readNotes();
+      setNotes(notesArray);
+    } catch (error) {
+      console.error("Failed to fetch notes:", error);
+    }
   }
 
-  function addNote(newNote) {
-    setNotes(prevNotes => {
-      dkeeper.createNote(newNote.title, newNote.content);
-      return [newNote, ...prevNotes];
-    });
+  // Add a new note
+  async function addNote(newNote) {
+    try {
+      await dkeeper.createNote(newNote.title, newNote.content);
+      setNotes(prevNotes => [newNote, ...prevNotes]);
+    } catch (error) {
+      console.error("Failed to add note:", error);
+    }
   }
 
-  function deleteNote(id) {
-    dkeeper.removeNote(id);
-    setNotes(prevNotes => {
-      return prevNotes.filter((noteItem, index) => {
-        return index !== id;
-      });
-    });
+  // Delete a note
+  async function deleteNote(id) {
+    try {
+      await dkeeper.removeNote(id);
+      setNotes(prevNotes => prevNotes.filter((noteItem, index) => index !== id));
+    } catch (error) {
+      console.error("Failed to delete note:", error);
+    }
   }
 
+  // Handle user login
+  const handleLogin = () => {
+    localStorage.setItem("isLoggedIn", "true");
+    setLoggedIn(true);
+  };
+
+  // Handle user logout
   const logout = () => {
+    localStorage.removeItem("isLoggedIn");
     setLoggedIn(false);
   };
 
+  // Conditional rendering based on login status
   if (!loggedIn) {
-    return <Login setLoggedIn={setLoggedIn} />;
+    return <Login setLoggedIn={handleLogin} />;
   }
 
   return (
@@ -55,7 +80,7 @@ function App() {
           id={index}
           title={noteItem.title}
           content={noteItem.content}
-          onDelete={deleteNote}
+          onDelete={() => deleteNote(index)}
         />
       ))}
       <Footer />
